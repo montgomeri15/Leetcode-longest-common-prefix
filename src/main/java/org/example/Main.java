@@ -4,16 +4,16 @@ import java.lang.reflect.Array;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(lengthOfLastWord("Hello World"));
+        System.out.println(isPalindrome("A man, a plan, a canal: Panama"));
     }
 
-    public static int lengthOfLastWord(String s) {
-        String lastWord = null;
-        if (s.length() > 0) {
-            s = s.trim();
-            lastWord = s.substring(s.lastIndexOf(" ") + 1);
+    public static boolean isPalindrome(String s) {
+        if (s.length() == 0){
+            return false;
         }
-        return lastWord.length();
+        String cleanString = s.replaceAll("\\p{Punct}|\\p{Space}", "").toLowerCase();
+        String reverseString = new StringBuilder(cleanString).reverse().toString();
+        return cleanString.equals(reverseString);
     }
 }
 
